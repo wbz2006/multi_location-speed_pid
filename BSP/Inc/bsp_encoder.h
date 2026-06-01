@@ -9,6 +9,7 @@
 #define ENCODER_REDUCTION_RATIO 21.3 // 减速比
 #define ENCODER_MULTIPLY 4      // STM32 4倍频计数
 #define SPEED_MEASURE_PERIOD 40 // 测速周期，单位ms
+#define LOCATION_MEASURE_PERIOD 40 // 测位周期，单位ms
 
 // 编码器句柄结构体
 typedef struct

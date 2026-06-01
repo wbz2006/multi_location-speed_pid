@@ -59,7 +59,7 @@ void Key_Process(void)
                 {
                     if ((global_count_tim -key_press_time) <= 1000)
                     {
-                        Target += 10;
+                        //Target += 10;
                     }
                     //if ((global_count_tim - key_press_time) >= 2000)
                     //else if ((global_count_tim - key_press_time) >= 1000)

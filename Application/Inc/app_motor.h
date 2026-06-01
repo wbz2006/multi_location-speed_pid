@@ -4,7 +4,8 @@
 #include "stm32f4xx_hal.h"
 #include <sys/types.h>
 
-extern uint8_t pid_control_flag;
+extern uint8_t inner_pid_control_flag;
+extern uint8_t outer_pid_control_flag;
 
 typedef struct 
 {
@@ -22,7 +23,7 @@ typedef struct
 	
 	float OutMax;
 	float OutMin;
-} pid_t;
+} PID_t;
 
 
 

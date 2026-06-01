@@ -8,7 +8,8 @@
 
 #include "stm32f4xx_hal.h"
 extern uint64_t global_count_tim;
-extern uint8_t pid_control_flag;
+extern uint8_t inner_pid_control_flag;
+extern uint8_t outer_pid_control_flag;
 
 
 #endif //AT8236_DRIVER_BSP_TIMER_H
