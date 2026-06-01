@@ -25,6 +25,11 @@ PID_t outer_pid =
     .OutMin = -100.0f,
 };
 
+/*前馈参数*/
+float Kf_v = 0.9f;  // 速度前馈系数
+float Kf_a = 0.05f; // 加速度前馈系数
+
+
 
 uint8_t inner_pid_control_flag = 0;
 uint8_t outer_pid_control_flag = 0;
@@ -91,7 +96,21 @@ void Motor_PID_Task(void)
         outer_pid.Actual = location;
 
         Motor_PID_calc(&outer_pid);
-
+        /*
+        static float last_target_location = 0;
+        static float last_speed_ff = 0;
+        
+        float speed_ff = (outer_pid.Target - last_target_location) / 0.04f; // 1. 计算目标速度前馈 = 目标位置变化量 / 控制周期
+        // 2. 计算目标加速度前馈 = 目标速度变化量 / 控制周期
+        float acc_ff = (speed_ff - last_speed_ff) / 0.04f;
+        
+        // 位置环PID输出 + 速度前馈 + 加速度前馈 = 速度环最终目标
+        inner_pid.Target = outer_pid.Out + Kf_v * speed_ff + Kf_a * acc_ff;
+        
+        // 保存上一次的值，用于下次计算
+        last_target_location = outer_pid.Target;
+        last_speed_ff = speed_ff;
+        */
         inner_pid.Target = outer_pid.Out;
         
     }
